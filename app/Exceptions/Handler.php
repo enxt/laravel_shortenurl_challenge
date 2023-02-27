@@ -45,4 +45,9 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+    {
+        return response()->json(['error' => $e->getMessage()], $e->getStatusCode() ?: 400, ["Content-Type"=>"application/json"]);
+    }
 }
