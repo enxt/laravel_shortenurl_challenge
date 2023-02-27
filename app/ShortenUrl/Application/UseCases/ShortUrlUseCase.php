@@ -7,15 +7,16 @@ use App\ShortenUrl\Application\Ports\spi\ShortenUrlServicePort;
 use App\ShortenUrl\Domain\Models\ShortedUrl;
 use App\ShortenUrl\Domain\Models\Url;
 
-class ShortUrlUseCase implements ShortenUrlApiPort
+readonly class ShortUrlUseCase implements ShortenUrlApiPort
 {
 
-    public function __construct(private readonly ShortenUrlServicePort $shortenUrlServicePort)
+    public function __construct(private ShortenUrlServicePort $shortenUrlServicePort)
     {
     }
 
     function execute(Url $url): ShortedUrl
     {
+
         return $this->shortenUrlServicePort->execute($url);
     }
 }
