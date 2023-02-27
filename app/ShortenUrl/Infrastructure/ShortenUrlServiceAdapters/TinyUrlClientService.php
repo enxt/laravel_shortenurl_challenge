@@ -12,6 +12,6 @@ class TinyUrlClientService implements ShortenUrlServicePort
     function execute(Url $url): ShortedUrl
     {
         // TODO: Implement execute() method.
-        return new ShortedUrl("noooooovaleeee");
+        return new ShortedUrl("no tiny url: " . $url->getResource());
     }
 }

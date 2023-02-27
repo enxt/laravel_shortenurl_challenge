@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('bearer')->prefix('v1')->group(function() {
-    Route::get("/short-urls", [ShortUrlController::class, 'short']);
+    Route::post("/short-urls", [ShortUrlController::class, 'short']);
 });

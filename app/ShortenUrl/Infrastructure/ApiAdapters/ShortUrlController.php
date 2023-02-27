@@ -4,6 +4,7 @@ namespace App\ShortenUrl\Infrastructure\ApiAdapters;
 
 use App\ShortenUrl\Application\Ports\api\ShortenUrlApiPort;
 use App\ShortenUrl\Domain\Models\Url;
+use App\ShortenUrl\Infrastructure\ApiAdapters\Model\ShortUrlRequest;
 use Illuminate\Routing\Controller as BaseController;
 
 class ShortUrlController extends BaseController
@@ -12,12 +13,16 @@ class ShortUrlController extends BaseController
 
     public function __construct(ShortenUrlApiPort $shortenUrlApiPort)
     {
+
         $this->shortenUrlApiPort = $shortenUrlApiPort;
     }
 
-    public function short(): array
+    public function short(ShortUrlRequest $shortUrlRequest): array
     {
-        $shortedUrl = $this->shortenUrlApiPort->execute(new Url("tst"));
+
+        $validatedRequest = $shortUrlRequest->safe();
+
+        $shortedUrl = $this->shortenUrlApiPort->execute(new Url($validatedRequest['url']));
         return ['url' => $shortedUrl->getShortedResource()];
     }
 }
