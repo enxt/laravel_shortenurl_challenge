@@ -1,5 +1,5 @@
 {
-    "name": "larave/shortenurl",
+    "name": "laravel/shortenurl",
     "type": "project",
     "description": "Laravel shorten url challenge",
     "keywords": ["shortUrl", "laravel"],
