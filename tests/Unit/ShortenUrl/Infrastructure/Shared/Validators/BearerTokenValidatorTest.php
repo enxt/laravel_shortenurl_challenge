@@ -28,7 +28,7 @@ class BearerTokenValidatorTest extends TestCase
         $bearerTokenValidation = new BearerTokenValidator();
 
         // When
-        $response = $bearerTokenValidation->validate("");
+        $response = $bearerTokenValidation->validate('');
 
         // Then
         $this->assertTrue($response);
@@ -63,6 +63,8 @@ class BearerTokenValidatorTest extends TestCase
         // Given
         $bearerTokenValidation = new BearerTokenValidator();
         $validTokens = [
+            'z',
+            'zñz',
             ']',
             '{',
             ')',
